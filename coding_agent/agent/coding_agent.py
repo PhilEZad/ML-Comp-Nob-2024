@@ -69,18 +69,6 @@ def setup_agents():
     executor = create_code_executor()
     return initialize_user_proxy(executor), initialize_coding_agent()
 
-def extract_tool_calls(chat_result):
-    """Extract tool calls from the chat history."""
-    return [
-        {
-            "name": call["function"]["name"],
-            "arguments": ast.literal_eval(call["function"]["arguments"])
-        }
-        for message in chat_result.chat_history
-        if "tool_calls" in message
-        for call in message["tool_calls"]
-    ]
-
 def extract_final_answer(chat_result):
     """Extract the final answer from the chat history."""
     for message in reversed(chat_result.chat_history):
@@ -107,7 +95,6 @@ def main():
     )
 
     # Extract and display results
-    tool_calls = extract_tool_calls(chat_result)
     final_solution = extract_final_answer(chat_result)
     
     print("Tool Calls:", tool_calls)
