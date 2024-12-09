@@ -25,9 +25,9 @@ Begin! DO NOT BREAK AWAY FROM THIS FORMAT.
 Question: {input}
 """
 
-def format_prompt(question):
+def format_prompt(sender, recipient, contenxt):
     """Format the prompt message with the given question."""
-    return PROMPT_TEMPLATE.format(input=question)
+    return PROMPT_TEMPLATE.format(input=contenxt["question"])
 
 def initialize_coding_agent():
     """Initialize the coding agent."""
