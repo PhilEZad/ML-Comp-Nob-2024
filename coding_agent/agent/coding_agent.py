@@ -97,7 +97,6 @@ def main():
     # Extract and display results
     final_solution = extract_final_answer(chat_result)
     
-    print("Tool Calls:", tool_calls)
     print("Final Answer:", final_solution)
 
 if __name__ == "__main__":
